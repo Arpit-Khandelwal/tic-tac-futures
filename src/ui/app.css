@@ -1,0 +1,112 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+/* Top bar ----------------------------------------------------------------- */
+.app-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--color-line);
+  background: var(--color-surface-raised);
+}
+
+.app-mark {
+  display: inline-flex;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: -0.04em;
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.app-mark-x,
+.app-mark-o {
+  padding: 4px 7px;
+  line-height: 1;
+}
+
+.app-mark-x {
+  color: var(--color-x);
+  background: var(--color-x-soft);
+}
+
+.app-mark-o {
+  color: var(--color-o);
+  background: var(--color-o-soft);
+}
+
+.app-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.app-tour-btn {
+  margin-left: auto;
+  flex: none;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-line-strong);
+  border-radius: 999px;
+  background: var(--color-surface-raised);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  transition:
+    border-color var(--duration-fast) var(--ease-out-expo),
+    background var(--duration-fast) var(--ease-out-expo),
+    color var(--duration-fast) var(--ease-out-expo),
+    transform var(--duration-fast) var(--ease-out-expo);
+}
+
+.app-tour-btn:hover {
+  border-color: var(--color-x);
+  color: var(--color-x);
+  background: var(--color-x-soft);
+}
+
+.app-tour-btn:active {
+  transform: scale(0.97);
+}
+
+.app-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.app-sub {
+  margin: 0;
+  font-size: var(--text-label);
+  color: var(--color-muted);
+}
+
+/* Two-panel layout -------------------------------------------------------- */
+.app-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(320px, 380px) 1fr;
+}
+
+.app-grid > .present {
+  overflow: auto;
+}
+
+@media (max-width: 860px) {
+  .app-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .app-grid > .present {
+    border-right: none;
+    border-bottom: 1px solid var(--color-line);
+  }
+}

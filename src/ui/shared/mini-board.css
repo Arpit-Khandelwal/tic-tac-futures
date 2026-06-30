@@ -1,0 +1,37 @@
+.mini-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 42px;
+  height: 42px;
+  gap: 1px;
+  background: var(--color-line);
+  border-radius: 4px;
+  overflow: hidden;
+  flex: none;
+}
+
+.mini-cell {
+  background: var(--color-surface-raised);
+  display: grid;
+  place-items: center;
+}
+
+.mini-cell--highlight {
+  background: oklch(96% 0.02 274);
+}
+
+.mini-mark {
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  font-family: var(--font-mono);
+}
+
+.mini-mark--x {
+  color: var(--color-x);
+}
+
+.mini-mark--o {
+  color: var(--color-o);
+}

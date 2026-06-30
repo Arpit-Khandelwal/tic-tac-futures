@@ -1,0 +1,77 @@
+/* Winning-line sweep ----------------------------------------------------- */
+.win-line {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 3;
+}
+
+/* Celebration overlay ---------------------------------------------------- */
+.celebration {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.celebration-glow {
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  will-change: transform, opacity;
+}
+.celebration-glow[data-winner='X'] {
+  background: radial-gradient(circle, var(--color-x-soft), transparent 70%);
+}
+.celebration-glow[data-winner='O'] {
+  background: radial-gradient(circle, var(--color-o-soft), transparent 70%);
+}
+
+.celebration-ring {
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  border: 2px solid var(--color-draw);
+  will-change: transform, opacity;
+}
+
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  will-change: transform, opacity;
+}
+
+/* Loss shake — transform-only, disabled under reduced motion ------------- */
+@media (prefers-reduced-motion: no-preference) {
+  .board-stage[data-shake='true'] {
+    animation: board-shake 0.5s var(--ease-out-expo);
+  }
+}
+
+@keyframes board-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(5px);
+  }
+  60% {
+    transform: translateX(-3px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+}

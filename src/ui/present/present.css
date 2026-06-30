@@ -1,0 +1,263 @@
+.present {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  background: var(--color-surface-raised);
+  border-right: 1px solid var(--color-line);
+}
+
+.panel-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.panel-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Turn / outcome ---------------------------------------------------------- */
+.turn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.turn-value {
+  font-size: var(--text-display);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.turn-value[data-player='X'] {
+  color: var(--color-x);
+}
+.turn-value[data-player='O'] {
+  color: var(--color-o);
+}
+.turn-value[data-player='draw'] {
+  color: var(--color-draw);
+}
+
+/* Thinking beat ----------------------------------------------------------- */
+.thinking {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: calc(-1 * var(--space-3)) 0 0;
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--color-o);
+}
+
+.thinking-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--color-o);
+  animation: thinking-pulse 1s var(--ease-out-expo) infinite;
+}
+
+@keyframes thinking-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+/* Board + eval bar stage -------------------------------------------------- */
+.board-stage {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-4);
+}
+
+.board-frame {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Teleport ripple — one-shot pulse when the present re-roots from a tree click */
+.teleport-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  aspect-ratio: 1;
+  margin: -30% 0 0 -30%;
+  border-radius: 50%;
+  border: 2px solid var(--color-x);
+  pointer-events: none;
+  z-index: 2;
+  will-change: transform, opacity;
+}
+
+/* Controls ---------------------------------------------------------------- */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.controls-toggles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.controls-row {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.btn {
+  flex: 1;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-raised);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  transition:
+    border-color var(--duration-fast) var(--ease-out-expo),
+    background var(--duration-fast) var(--ease-out-expo),
+    transform var(--duration-fast) var(--ease-out-expo);
+}
+
+.btn:not(:disabled):hover {
+  border-color: var(--color-text);
+  background: oklch(97% 0 0);
+}
+
+.btn:not(:disabled):active {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* Toggle ------------------------------------------------------------------ */
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: none;
+  border: none;
+  padding: var(--space-1) 0;
+  transition: transform var(--duration-fast) var(--ease-out-expo);
+}
+
+.toggle:active {
+  transform: scale(0.98);
+}
+
+.toggle-track {
+  position: relative;
+  width: 38px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--color-line-strong);
+  transition: background var(--duration-normal) var(--ease-out-expo);
+  flex: none;
+}
+
+.toggle-track[data-on='true'] {
+  background: var(--color-x);
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--color-surface-raised);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-normal) var(--ease-out-expo);
+}
+
+.toggle-track[data-on='true'] .toggle-thumb {
+  transform: translateX(16px);
+}
+
+.toggle-label {
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+}
+
+/* Stats ------------------------------------------------------------------- */
+.present-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-line);
+}
+
+.stat-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Verdict ----------------------------------------------------------------- */
+.verdict {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.verdict-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.verdict-badge {
+  font-size: var(--text-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--tracking-eyebrow);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--color-draw-soft);
+  color: var(--color-text);
+}
+
+.verdict-badge[data-verdict='WIN'] {
+  background: var(--color-x-soft);
+  color: var(--color-x);
+}
+.verdict-badge[data-verdict='LOSS'] {
+  background: var(--color-o-soft);
+  color: var(--color-o);
+}
+
+.verdict-text {
+  font-size: var(--text-label);
+  color: var(--color-muted);
+}

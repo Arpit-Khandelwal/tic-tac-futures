@@ -1,0 +1,119 @@
+/* Editorial / Swiss data-viz direction:
+   white, crisp, generous whitespace, precise typographic labels, restrained
+   palette with semantic accents. Design tokens drive everything below. */
+:root {
+  /* Semantic palette */
+  --color-x: oklch(48% 0.18 274); /* indigo */
+  --color-x-soft: oklch(48% 0.18 274 / 0.12);
+  --color-o: oklch(58% 0.19 18); /* rose */
+  --color-o-soft: oklch(58% 0.19 18 / 0.12);
+  --color-draw: oklch(72% 0 0); /* neutral gray */
+  --color-draw-soft: oklch(72% 0 0 / 0.16);
+
+  /* Surfaces & ink */
+  --color-surface: oklch(99% 0 0);
+  --color-surface-raised: oklch(100% 0 0);
+  --color-text: oklch(20% 0 0);
+  --color-muted: oklch(55% 0 0);
+  --color-faint: oklch(72% 0 0);
+  --color-line: oklch(90% 0 0);
+  --color-line-strong: oklch(82% 0 0);
+  --color-star: oklch(78% 0.16 85); /* warm gold for optimal-move ★ */
+
+  /* Move-quality grades (engine-style coaching) */
+  --color-best: oklch(74% 0.15 92); /* gold — best / optimal */
+  --color-best-soft: oklch(74% 0.15 92 / 0.16);
+  --color-inaccuracy: oklch(74% 0.15 64); /* amber */
+  --color-inaccuracy-soft: oklch(74% 0.15 64 / 0.16);
+  --color-blunder: oklch(58% 0.19 18); /* rose */
+  --color-blunder-soft: oklch(58% 0.19 18 / 0.16);
+
+  /* Type scale (Swiss: high contrast between display and labels) */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'SFMono-Regular', 'JetBrains Mono', ui-monospace, monospace;
+  --text-eyebrow: 0.6875rem;
+  --text-label: 0.8125rem;
+  --text-body: 0.9375rem;
+  --text-display: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
+  --tracking-eyebrow: 0.18em;
+  --tracking-label: 0.04em;
+
+  /* Spacing rhythm */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-10: 4rem;
+
+  /* Radii & elevation */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 2px oklch(20% 0 0 / 0.04), 0 1px 1px oklch(20% 0 0 / 0.03);
+  --shadow-md: 0 4px 16px oklch(20% 0 0 / 0.06), 0 1px 3px oklch(20% 0 0 / 0.04);
+  --shadow-focus: 0 0 0 3px oklch(48% 0.18 274 / 0.28);
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-normal: 280ms;
+  --duration-slow: 460ms;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-feature-settings: 'cv11', 'ss01', 'tnum';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* Shared editorial primitives -------------------------------------------- */
+
+.eyebrow {
+  font-size: var(--text-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-muted);
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,88 @@
+.board {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2px;
+  width: min(100%, 320px);
+  aspect-ratio: 1;
+  background: var(--color-line-strong);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.square {
+  position: relative;
+  border: none;
+  background: var(--color-surface-raised);
+  display: grid;
+  place-items: center;
+  padding: 14%;
+  transition: background var(--duration-fast) var(--ease-out-expo);
+}
+
+.square:disabled {
+  cursor: default;
+}
+
+.square:not(:disabled):hover {
+  background: oklch(97.5% 0 0);
+}
+
+.square-mark,
+.square-ghost {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Faint preview of the mark that will be placed next. */
+.square-ghost {
+  opacity: 0;
+  transform: scale(0.86);
+  transition:
+    opacity var(--duration-fast) var(--ease-out-expo),
+    transform var(--duration-fast) var(--ease-out-expo);
+}
+
+.square:not(:disabled):hover .square-ghost,
+.square:not(:disabled):focus-visible .square-ghost {
+  opacity: 0.22;
+  transform: scale(1);
+}
+
+.square--optimal {
+  background: oklch(98.5% 0.03 95);
+}
+
+/* Winning three-in-a-row cells lift subtly behind the swept line. */
+.square--winning {
+  background: oklch(97% 0.03 274);
+  z-index: 2;
+}
+.square--winning[data-player='O'] {
+  background: oklch(97% 0.03 18);
+}
+
+.square-star {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 0.75rem;
+  line-height: 1;
+  color: var(--color-star);
+  animation: star-pulse 2.4s var(--ease-out-expo) infinite;
+}
+
+@keyframes star-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+}

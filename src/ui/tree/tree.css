@@ -1,0 +1,208 @@
+.futures {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  background: var(--color-surface);
+}
+
+.futures-head {
+  padding: var(--space-6) var(--space-6) var(--space-4);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.futures-hint {
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-label);
+  color: var(--color-muted);
+  max-width: 52ch;
+}
+
+/* Scroll surface for the pannable tree ----------------------------------- */
+.tree-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: var(--space-6);
+}
+
+.tree-root-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-6);
+  width: max-content;
+}
+
+/* Child columns ----------------------------------------------------------- */
+.tree-children {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.tree-children--root {
+  gap: var(--space-3);
+}
+
+.tree-node {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-5);
+  position: relative;
+}
+
+.tree-node > .tree-children {
+  padding-left: var(--space-5);
+}
+
+.tree-root-row {
+  position: relative;
+}
+
+/* Curved SVG node-link connectors overlay (drawn by Connectors.tsx). */
+.connectors {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Node card --------------------------------------------------------------- */
+.node-card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-1);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  flex: none;
+}
+
+.node-card:hover {
+  border-color: var(--color-line-strong);
+  box-shadow: var(--shadow-md);
+}
+
+/* Hover-path highlight: brighten the root→hovered chain, dim the rest. */
+.node-card {
+  transition:
+    border-color var(--duration-fast) var(--ease-out-expo),
+    box-shadow var(--duration-fast) var(--ease-out-expo),
+    opacity var(--duration-normal) var(--ease-out-expo);
+}
+
+.node-card[data-lit='true'] {
+  border-color: var(--color-line-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.node-card[data-lit='false'] {
+  opacity: 0.38;
+}
+
+/* Inert nodes (Oracle mode) keep the board readable but drop the click affordance. */
+.node-main[data-static='true'] {
+  cursor: default;
+}
+
+.node-card--root {
+  border-color: var(--color-text);
+  box-shadow: var(--shadow-md);
+}
+
+.node-card--optimal {
+  border-color: var(--color-star);
+}
+
+.node-main {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  text-align: left;
+  width: 184px;
+  transition: background var(--duration-fast) var(--ease-out-expo);
+}
+
+.node-main:hover {
+  background: oklch(98% 0 0);
+}
+
+.node-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+  flex: 1;
+}
+
+.node-move {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  color: var(--color-muted);
+  text-transform: capitalize;
+}
+
+.node-star {
+  color: var(--color-star);
+  font-size: 0.75rem;
+  animation: star-pulse 2.4s var(--ease-out-expo) infinite;
+}
+
+/* Symmetry-fold multiplier badge: "×4" etc. */
+.node-mult {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 var(--space-2);
+  height: 16px;
+  border-radius: 999px;
+  background: var(--color-draw-soft);
+  color: var(--color-text);
+  font-size: 0.625rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Expander ---------------------------------------------------------------- */
+.node-expand {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  background: none;
+  border: none;
+  border-left: 1px solid var(--color-line);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  color: var(--color-faint);
+  transition:
+    background var(--duration-fast) var(--ease-out-expo),
+    color var(--duration-fast) var(--ease-out-expo);
+}
+
+.node-expand:hover {
+  background: oklch(97% 0 0);
+  color: var(--color-text);
+}
+
+.node-chevron {
+  display: inline-block;
+  font-size: 0.7rem;
+  line-height: 1;
+}

@@ -1,0 +1,131 @@
+.tour {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+}
+
+.tour-mask {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.tour-dim {
+  fill: oklch(20% 0 0 / 0.58);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Floating dialog --------------------------------------------------------- */
+.tour-bubble {
+  position: absolute;
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-raised);
+  box-shadow: var(--shadow-md), 0 0 0 1px var(--color-line);
+  outline: none;
+}
+
+.tour-bubble--centered {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tour-step-count {
+  margin: 0;
+  font-size: var(--text-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-x);
+}
+
+.tour-title {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.tour-body {
+  margin: 0;
+  font-size: var(--text-label);
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+.tour-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-2);
+  gap: var(--space-3);
+}
+
+.tour-nav {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.tour-skip {
+  border: none;
+  background: none;
+  padding: var(--space-2) 0;
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--color-faint);
+  transition:
+    color var(--duration-fast) var(--ease-out-expo),
+    transform var(--duration-fast) var(--ease-out-expo);
+}
+
+.tour-skip:hover {
+  color: var(--color-muted);
+}
+
+.tour-skip:active {
+  transform: scale(0.97);
+}
+
+.tour-btn {
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-raised);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  transition:
+    border-color var(--duration-fast) var(--ease-out-expo),
+    background var(--duration-fast) var(--ease-out-expo),
+    transform var(--duration-fast) var(--ease-out-expo);
+}
+
+.tour-btn:not(:disabled):hover {
+  border-color: var(--color-text);
+}
+
+.tour-btn:not(:disabled):active {
+  transform: scale(0.97);
+}
+
+.tour-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.tour-btn--primary {
+  background: var(--color-x);
+  border-color: var(--color-x);
+  color: var(--color-surface);
+}
+
+.tour-btn--primary:not(:disabled):hover {
+  background: oklch(42% 0.18 274);
+  border-color: oklch(42% 0.18 274);
+}

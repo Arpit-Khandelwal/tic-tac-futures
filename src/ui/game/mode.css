@@ -1,0 +1,142 @@
+.mode-switch {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Segmented control ------------------------------------------------------ */
+.segmented-with-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.segmented {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  border-radius: var(--radius-md);
+  background: oklch(96% 0 0);
+  box-shadow: inset 0 0 0 1px var(--color-line);
+}
+
+.segmented--mini {
+  align-self: flex-start;
+}
+
+.segmented-btn {
+  position: relative;
+  flex: 1;
+  padding: var(--space-2) var(--space-3);
+  border: none;
+  border-radius: calc(var(--radius-md) - 3px);
+  background: none;
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  color: var(--color-muted);
+  white-space: nowrap;
+  transition: color var(--duration-fast) var(--ease-out-expo);
+}
+
+.segmented-btn[data-active='true'] {
+  color: var(--color-text);
+}
+
+.segmented-btn:active {
+  transform: scale(0.97);
+}
+
+.segmented-btn:not([data-active='true']):hover {
+  color: var(--color-text);
+}
+
+.segmented-indicator {
+  position: absolute;
+  inset: 0;
+  border-radius: calc(var(--radius-md) - 3px);
+  background: var(--color-surface-raised);
+  box-shadow: var(--shadow-sm);
+  z-index: 0;
+}
+
+.segmented-label {
+  position: relative;
+  z-index: 1;
+}
+
+/* Oracle meta ------------------------------------------------------------ */
+.oracle-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--color-x-soft);
+  border: 1px solid oklch(48% 0.18 274 / 0.18);
+}
+
+.oracle-tagline {
+  margin: 0;
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--color-x);
+  line-height: 1.4;
+}
+
+/* Streak ----------------------------------------------------------------- */
+.streak {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.streak-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.streak-value-wrap {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+}
+
+.streak-burst {
+  position: absolute;
+  inset: -6px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-best);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.streak-value {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-faint);
+  background: oklch(96% 0 0);
+  will-change: transform, opacity;
+}
+
+.streak[data-active='true'] .streak-value {
+  color: var(--color-best);
+  background: var(--color-best-soft);
+}
+
+.streak-caption {
+  font-size: var(--text-label);
+  color: var(--color-muted);
+}
+
+.streak-flag {
+  font-size: 1.1rem;
+  line-height: 1;
+}
