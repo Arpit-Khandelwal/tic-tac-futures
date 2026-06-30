@@ -91,6 +91,10 @@ bun run preview  # preview the production build
 
 <h2 id="how-its-built">🏗️ How it's built</h2>
 
+<p align="center">
+  <img src="docs/architecture.svg" alt="Architecture: App.tsx queries a pure, memoized engine through a frozen types.ts contract; the UI renders the returned data; clicking a node re-roots the present." width="940">
+</p>
+
 A pure, framework-free **engine** computes everything about the game; a **UI** layer just draws
 it. They're separated by a frozen type contract so each side can evolve alone. Every position is
 keyed by a 9-character `boardKey`, so census and minimax results are memoized and shared across

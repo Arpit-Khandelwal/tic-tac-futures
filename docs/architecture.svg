@@ -1,0 +1,118 @@
+<svg width="1020" height="660" viewBox="0 0 1020 660" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="tic-tac-futures architecture diagram">
+  <defs>
+    <style>
+      .h1   { font: 700 26px ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #18181b; }
+      .sub  { font: 400 15px ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #71717a; }
+      .band { font: 700 12px ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .14em; }
+      .name { font: 700 15px ui-monospace, "SF Mono", Menlo, monospace; fill: #3730a3; }
+      .role { font: 400 11.5px ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #71717a; }
+      .uiname { font: 700 13px ui-monospace, "SF Mono", Menlo, monospace; fill: #3f3f46; }
+      .uirole { font: 400 10px ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #a1a1aa; }
+      .flow { font: 600 12px ui-monospace, "SF Mono", Menlo, monospace; fill: #52525b; }
+      .appname { font: 700 18px ui-monospace, "SF Mono", Menlo, monospace; fill: #18181b; }
+      .appsub  { font: 400 13px ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #71717a; }
+      .ret  { font: 600 12px ui-monospace, "SF Mono", Menlo, monospace; fill: #be123c; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#71717a"/>
+    </marker>
+    <marker id="arrowRose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#e11d48"/>
+    </marker>
+  </defs>
+
+  <rect width="1020" height="660" fill="#ffffff"/>
+  <rect x="0" y="659" width="1020" height="1" fill="#e4e4e7"/>
+
+  <text x="40" y="50" class="h1">Architecture</text>
+  <text x="40" y="74" class="sub">A pure engine computes the game · the UI just draws it · every position keyed by a 9-char boardKey.</text>
+
+  <!-- ============ App layer ============ -->
+  <rect x="310" y="98" width="400" height="80" rx="14" fill="#ffffff" stroke="#4f46e5" stroke-width="1.6"/>
+  <text x="510" y="132" text-anchor="middle" class="appname">App.tsx</text>
+  <text x="510" y="156" text-anchor="middle" class="appsub">state · mode · fold · overlay · heatmap · history</text>
+
+  <!-- App -> Engine -->
+  <line x1="510" y1="178" x2="510" y2="246" stroke="#71717a" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="524" y="218" class="flow">query(board) · boardKey</text>
+
+  <!-- ============ Engine band ============ -->
+  <rect x="120" y="250" width="780" height="196" rx="16" fill="#fafafa" stroke="#e4e4e7"/>
+  <text x="144" y="278" class="band" fill="#6366f1">ENGINE — PURE · FRAMEWORK-FREE · MEMOIZED</text>
+
+  <!-- row 1 pills -->
+  <g>
+    <rect x="150" y="290" width="226" height="42" rx="10" fill="#eef2ff" stroke="#c7d2fe"/>
+    <text x="166" y="311" class="name">rules</text>
+    <text x="166" y="326" class="role">board · lines · winner</text>
+
+    <rect x="397" y="290" width="226" height="42" rx="10" fill="#eef2ff" stroke="#c7d2fe"/>
+    <text x="413" y="311" class="name">census</text>
+    <text x="413" y="326" class="role">full outcome counts</text>
+
+    <rect x="644" y="290" width="226" height="42" rx="10" fill="#eef2ff" stroke="#c7d2fe"/>
+    <text x="660" y="311" class="name">minimax</text>
+    <text x="660" y="326" class="role">verdict · optimal moves</text>
+  </g>
+  <!-- row 2 pills -->
+  <g>
+    <rect x="150" y="340" width="226" height="42" rx="10" fill="#eef2ff" stroke="#c7d2fe"/>
+    <text x="166" y="361" class="name">children</text>
+    <text x="166" y="376" class="role">legal + folded</text>
+
+    <rect x="397" y="340" width="226" height="42" rx="10" fill="#eef2ff" stroke="#c7d2fe"/>
+    <text x="413" y="361" class="name">symmetry</text>
+    <text x="413" y="376" class="role">the D4 group · canonical keys</text>
+
+    <rect x="644" y="340" width="226" height="42" rx="10" fill="#eef2ff" stroke="#c7d2fe"/>
+    <text x="660" y="361" class="name">quality</text>
+    <text x="660" y="376" class="role">best / inaccuracy / blunder</text>
+  </g>
+  <!-- frozen contract bar -->
+  <rect x="150" y="394" width="720" height="34" rx="9" fill="#18181b"/>
+  <text x="510" y="416" text-anchor="middle" class="band" fill="#fafafa">types.ts — THE FROZEN ENGINE / UI CONTRACT</text>
+
+  <!-- Engine -> UI -->
+  <line x1="510" y1="446" x2="510" y2="492" stroke="#71717a" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="524" y="475" class="flow">returns Census · Minimax · FutureNode[]</text>
+
+  <!-- ============ UI band ============ -->
+  <rect x="120" y="496" width="780" height="118" rx="16" fill="#ffffff" stroke="#e4e4e7"/>
+  <text x="144" y="524" class="band" fill="#a1a1aa">UI — RENDERS THE DATA</text>
+
+  <g>
+    <rect x="150" y="536" width="96" height="60" rx="10" fill="#f4f4f5" stroke="#e4e4e7"/>
+    <text x="198" y="566" text-anchor="middle" class="uiname">present</text>
+    <text x="198" y="582" text-anchor="middle" class="uirole">live board</text>
+
+    <rect x="256" y="536" width="96" height="60" rx="10" fill="#f4f4f5" stroke="#e4e4e7"/>
+    <text x="304" y="566" text-anchor="middle" class="uiname">tree</text>
+    <text x="304" y="582" text-anchor="middle" class="uirole">futures</text>
+
+    <rect x="362" y="536" width="96" height="60" rx="10" fill="#f4f4f5" stroke="#e4e4e7"/>
+    <text x="410" y="566" text-anchor="middle" class="uiname">game</text>
+    <text x="410" y="582" text-anchor="middle" class="uirole">Oracle</text>
+
+    <rect x="468" y="536" width="96" height="60" rx="10" fill="#f4f4f5" stroke="#e4e4e7"/>
+    <text x="516" y="566" text-anchor="middle" class="uiname">eval</text>
+    <text x="516" y="582" text-anchor="middle" class="uirole">bar · badge</text>
+
+    <rect x="574" y="536" width="96" height="60" rx="10" fill="#f4f4f5" stroke="#e4e4e7"/>
+    <text x="622" y="566" text-anchor="middle" class="uiname">effects</text>
+    <text x="622" y="582" text-anchor="middle" class="uirole">sound · win</text>
+
+    <rect x="680" y="536" width="96" height="60" rx="10" fill="#f4f4f5" stroke="#e4e4e7"/>
+    <text x="728" y="566" text-anchor="middle" class="uiname">tour</text>
+    <text x="728" y="582" text-anchor="middle" class="uirole">onboarding</text>
+
+    <rect x="786" y="536" width="84" height="60" rx="10" fill="#f4f4f5" stroke="#e4e4e7"/>
+    <text x="828" y="566" text-anchor="middle" class="uiname">help</text>
+    <text x="828" y="582" text-anchor="middle" class="uirole">tooltips</text>
+  </g>
+
+  <!-- return flow: UI click -> App re-roots -->
+  <path d="M 900 555 C 968 555, 968 138, 712 138" stroke="#e11d48" stroke-width="1.5" fill="none" stroke-dasharray="5 5" marker-end="url(#arrowRose)"/>
+  <g transform="translate(992,360) rotate(-90)">
+    <text x="0" y="0" text-anchor="middle" class="ret">click a node → teleport · re-root the present</text>
+  </g>
+</svg>
