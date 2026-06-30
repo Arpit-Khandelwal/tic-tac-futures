@@ -19,8 +19,8 @@ export default function App() {
   const [difficulty, setDifficulty] = useState<OracleDifficulty>('perfect');
   const [overlay, setOverlay] = useState(false);
   const [fold, setFold] = useState(false);
-  const [heatmap, setHeatmap] = useState(false);
-  const [sound, setSound] = useState(false);
+  const [heatmap, setHeatmap] = useState(true);
+  const [sound, setSound] = useState(true);
   const [teleportPing, setTeleportPing] = useState(0);
   const tour = useTour();
 
