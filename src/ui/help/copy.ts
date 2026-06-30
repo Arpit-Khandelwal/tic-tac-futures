@@ -13,19 +13,19 @@ export interface ControlCopy {
 
 export const CONTROL_COPY = {
   overlay: {
-    label: 'What does the Minimax overlay do?',
-    body: 'Marks the perfect-play move(s) with ★ — the optimal choice if both sides play flawlessly.',
+    label: 'What does marking the best moves do?',
+    body: 'Marks the perfect-play move(s) with ★ — the optimal choice if both sides play flawlessly (this is the minimax overlay).',
   },
   fold: {
-    label: 'What does Fold symmetries do?',
-    body: 'Merges mirror/rotation-equivalent branches into one (the 9 openings collapse to 3: corner ×4, edge ×4, center ×1).',
+    label: 'What does merging mirror & rotated moves do?',
+    body: 'Folds branches that are the same under rotation or reflection into one (the 9 openings collapse to 3: corner ×4, edge ×4, center ×1).',
   },
   heatmap: {
-    label: 'What does the Fate heatmap do?',
+    label: 'What does tinting moves by who is favored do?',
     body: 'Tints each future by which side it favors across all continuations (indigo = X-leaning, rose = O-leaning).',
   },
   sound: {
-    label: 'What does Sound do?',
+    label: 'What do the sound effects do?',
     body: 'Soft audio cues for moves and game endings.',
   },
   mode: {

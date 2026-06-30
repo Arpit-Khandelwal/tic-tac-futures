@@ -71,24 +71,29 @@ export function Controls({
       </div>
       <div className="controls-toggles" data-tour="toggles">
         <Toggle
-          label="Minimax overlay"
+          label="Mark the best moves (★)"
           checked={overlay}
           onToggle={onToggleOverlay}
           info={CONTROL_COPY.overlay}
         />
         <Toggle
-          label="Fold symmetries"
+          label="Merge mirror & rotated moves"
           checked={fold}
           onToggle={onToggleFold}
           info={CONTROL_COPY.fold}
         />
         <Toggle
-          label="Fate heatmap"
+          label="Tint moves by who's favored"
           checked={heatmap}
           onToggle={onToggleHeatmap}
           info={CONTROL_COPY.heatmap}
         />
-        <Toggle label="Sound" checked={sound} onToggle={onToggleSound} info={CONTROL_COPY.sound} />
+        <Toggle
+          label="Sound effects"
+          checked={sound}
+          onToggle={onToggleSound}
+          info={CONTROL_COPY.sound}
+        />
       </div>
     </div>
   );

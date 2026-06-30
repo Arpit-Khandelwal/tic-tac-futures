@@ -49,7 +49,7 @@ describe('Tic-Tac-Toe Future Simulator UI', () => {
     expect(screen.getAllByRole('button', { name: /teleport to position X →/i })).toHaveLength(9);
 
     // Turn on symmetry folding.
-    fireEvent.click(screen.getByRole('switch', { name: /fold symmetries/i }));
+    fireEvent.click(screen.getByRole('switch', { name: /merge mirror & rotated moves/i }));
 
     // 9 openings collapse to 3 classes: corner, edge, center.
     expect(screen.getAllByRole('button', { name: /teleport to position X →/i })).toHaveLength(3);
