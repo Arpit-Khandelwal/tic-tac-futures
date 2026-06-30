@@ -1,0 +1,148 @@
+<svg width="1200" height="420" viewBox="0 0 1200 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="tic-tac-futures — a pocket time machine for tic-tac-toe">
+  <defs>
+    <style>
+      .title  { font: 700 46px ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #18181b; }
+      .tag     { font: 400 19px ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #52525b; }
+      .fact    { font: 600 13px ui-monospace, "SF Mono", Menlo, monospace; fill: #a1a1aa; letter-spacing: .04em; }
+      .eyebrow { font: 700 11px ui-monospace, "SF Mono", Menlo, monospace; fill: #a1a1aa; letter-spacing: .18em; }
+      .nodelbl { font: 600 12px ui-monospace, "SF Mono", Menlo, monospace; fill: #71717a; }
+      .chip    { font: 800 18px ui-monospace, "SF Mono", Menlo, monospace; }
+    </style>
+  </defs>
+
+  <!-- background -->
+  <rect width="1200" height="420" fill="#ffffff"/>
+  <rect x="0" y="419" width="1200" height="1" fill="#e4e4e7"/>
+
+  <!-- ============ title block ============ -->
+  <!-- X / O chips -->
+  <rect x="60"  y="64" width="38" height="38" rx="9" fill="#eef2ff" stroke="#c7d2fe"/>
+  <text x="79"  y="90" text-anchor="middle" class="chip" fill="#4f46e5">X</text>
+  <rect x="104" y="64" width="38" height="38" rx="9" fill="#fff1f2" stroke="#fecdd3"/>
+  <text x="123" y="90" text-anchor="middle" class="chip" fill="#e11d48">O</text>
+
+  <text x="60" y="178" class="title">tic-tac-futures</text>
+  <text x="60" y="214" class="tag">A pocket time machine for tic-tac-toe.</text>
+
+  <text x="60" y="262" class="fact">255,168 timelines</text>
+  <text x="60" y="284" class="fact"><tspan fill="#4f46e5">131,184 X</tspan>   ·   <tspan fill="#9ca3af">46,080 draw</tspan>   ·   <tspan fill="#e11d48">77,904 O</tspan></text>
+
+  <text x="60" y="332" class="eyebrow">MAKE A MOVE&#160;&#160;→&#160;&#160;STEP THROUGH EVERY FUTURE IT CREATES</text>
+
+  <!-- faint divider -->
+  <rect x="440" y="48" width="1" height="324" fill="#f4f4f5"/>
+
+  <!-- ============ present board ============ -->
+  <text x="566" y="74" text-anchor="middle" class="eyebrow">PRESENT</text>
+  <g transform="translate(496,90)">
+    <rect x="0" y="0" width="140" height="140" rx="12" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.5"/>
+    <line x1="46.7" y1="14" x2="46.7" y2="126" stroke="#e4e4e7"/>
+    <line x1="93.3" y1="14" x2="93.3" y2="126" stroke="#e4e4e7"/>
+    <line x1="14" y1="46.7" x2="126" y2="46.7" stroke="#e4e4e7"/>
+    <line x1="14" y1="93.3" x2="126" y2="93.3" stroke="#e4e4e7"/>
+  </g>
+
+  <!-- connectors from present to each future -->
+  <g stroke="#d4d4d8" stroke-width="1.5" fill="none" opacity="0.9">
+    <path d="M642 150 C 690 150, 700 84,  748 84"/>
+    <path d="M642 160 C 690 160, 700 167, 748 167"/>
+    <path d="M642 170 C 690 170, 700 250, 748 250"/>
+    <path d="M642 180 C 690 180, 700 333, 748 333"/>
+  </g>
+
+  <!-- ============ futures (4 cards) ============ -->
+  <!-- card 1: X corner -->
+  <g transform="translate(748,48)">
+    <g>
+      <rect x="0" y="0" width="64" height="64" rx="10" fill="#fafafa" stroke="#e4e4e7"/>
+      <line x1="21.3" y1="8" x2="21.3" y2="56" stroke="#ececee"/>
+      <line x1="42.7" y1="8" x2="42.7" y2="56" stroke="#ececee"/>
+      <line x1="8" y1="21.3" x2="56" y2="21.3" stroke="#ececee"/>
+      <line x1="8" y1="42.7" x2="56" y2="42.7" stroke="#ececee"/>
+      <!-- X top-left -->
+      <g stroke="#4f46e5" stroke-width="2.4" stroke-linecap="round">
+        <line x1="6.3" y1="6.3" x2="14.3" y2="14.3"/>
+        <line x1="14.3" y1="6.3" x2="6.3" y2="14.3"/>
+      </g>
+    </g>
+    <text x="84" y="22" class="nodelbl">X → corner</text>
+    <rect x="84" y="34" width="300" height="9" rx="4.5" fill="#e4e4e7"/>
+    <clipPath id="b1"><rect x="84" y="34" width="300" height="9" rx="4.5"/></clipPath>
+    <g clip-path="url(#b1)">
+      <rect x="84"  y="34" width="174" height="9" fill="#4f46e5"/>
+      <rect x="258" y="34" width="54"  height="9" fill="#9ca3af"/>
+      <rect x="312" y="34" width="72"  height="9" fill="#e11d48"/>
+    </g>
+  </g>
+
+  <!-- card 2: X edge -->
+  <g transform="translate(748,131)">
+    <g>
+      <rect x="0" y="0" width="64" height="64" rx="10" fill="#fafafa" stroke="#e4e4e7"/>
+      <line x1="21.3" y1="8" x2="21.3" y2="56" stroke="#ececee"/>
+      <line x1="42.7" y1="8" x2="42.7" y2="56" stroke="#ececee"/>
+      <line x1="8" y1="21.3" x2="56" y2="21.3" stroke="#ececee"/>
+      <line x1="8" y1="42.7" x2="56" y2="42.7" stroke="#ececee"/>
+      <!-- X top-center -->
+      <g stroke="#4f46e5" stroke-width="2.4" stroke-linecap="round">
+        <line x1="27.7" y1="6.3" x2="35.7" y2="14.3"/>
+        <line x1="35.7" y1="6.3" x2="27.7" y2="14.3"/>
+      </g>
+    </g>
+    <text x="84" y="22" class="nodelbl">X → edge</text>
+    <rect x="84" y="34" width="300" height="9" rx="4.5" fill="#e4e4e7"/>
+    <clipPath id="b2"><rect x="84" y="34" width="300" height="9" rx="4.5"/></clipPath>
+    <g clip-path="url(#b2)">
+      <rect x="84"  y="34" width="150" height="9" fill="#4f46e5"/>
+      <rect x="234" y="34" width="66"  height="9" fill="#9ca3af"/>
+      <rect x="300" y="34" width="84"  height="9" fill="#e11d48"/>
+    </g>
+  </g>
+
+  <!-- card 3: X center -->
+  <g transform="translate(748,214)">
+    <g>
+      <rect x="0" y="0" width="64" height="64" rx="10" fill="#fafafa" stroke="#e4e4e7"/>
+      <line x1="21.3" y1="8" x2="21.3" y2="56" stroke="#ececee"/>
+      <line x1="42.7" y1="8" x2="42.7" y2="56" stroke="#ececee"/>
+      <line x1="8" y1="21.3" x2="56" y2="21.3" stroke="#ececee"/>
+      <line x1="8" y1="42.7" x2="56" y2="42.7" stroke="#ececee"/>
+      <!-- X center -->
+      <g stroke="#4f46e5" stroke-width="2.4" stroke-linecap="round">
+        <line x1="27.7" y1="27.7" x2="35.7" y2="35.7"/>
+        <line x1="35.7" y1="27.7" x2="27.7" y2="35.7"/>
+      </g>
+    </g>
+    <text x="84" y="22" class="nodelbl">X → center</text>
+    <rect x="84" y="34" width="300" height="9" rx="4.5" fill="#e4e4e7"/>
+    <clipPath id="b3"><rect x="84" y="34" width="300" height="9" rx="4.5"/></clipPath>
+    <g clip-path="url(#b3)">
+      <rect x="84"  y="34" width="186" height="9" fill="#4f46e5"/>
+      <rect x="270" y="34" width="60"  height="9" fill="#9ca3af"/>
+      <rect x="330" y="34" width="54"  height="9" fill="#e11d48"/>
+    </g>
+  </g>
+
+  <!-- card 4: dimmed "expand deeper" -->
+  <g transform="translate(748,297)" opacity="0.55">
+    <g>
+      <rect x="0" y="0" width="64" height="64" rx="10" fill="#fafafa" stroke="#e4e4e7"/>
+      <line x1="21.3" y1="8" x2="21.3" y2="56" stroke="#ececee"/>
+      <line x1="42.7" y1="8" x2="42.7" y2="56" stroke="#ececee"/>
+      <line x1="8" y1="21.3" x2="56" y2="21.3" stroke="#ececee"/>
+      <line x1="8" y1="42.7" x2="56" y2="42.7" stroke="#ececee"/>
+      <g stroke="#4f46e5" stroke-width="2.4" stroke-linecap="round">
+        <line x1="6.3" y1="48.3" x2="14.3" y2="56.3"/>
+        <line x1="14.3" y1="48.3" x2="6.3" y2="56.3"/>
+      </g>
+    </g>
+    <text x="84" y="22" class="nodelbl">… click to teleport · expand ▸ to go deeper</text>
+    <rect x="84" y="34" width="300" height="9" rx="4.5" fill="#e4e4e7"/>
+    <clipPath id="b4"><rect x="84" y="34" width="300" height="9" rx="4.5"/></clipPath>
+    <g clip-path="url(#b4)">
+      <rect x="84"  y="34" width="138" height="9" fill="#4f46e5"/>
+      <rect x="222" y="34" width="72"  height="9" fill="#9ca3af"/>
+      <rect x="294" y="34" width="90"  height="9" fill="#e11d48"/>
+    </g>
+  </g>
+</svg>

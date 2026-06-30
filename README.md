@@ -1,58 +1,78 @@
-# tic-tac-futures
+<p align="center">
+  <img src="docs/banner.svg" alt="tic-tac-futures — a pocket time machine for tic-tac-toe" width="880">
+</p>
 
-> A pocket time machine for tic-tac-toe. Make a move, then step *forward* through
-> every timeline that move creates — branching, counted, and explorable in real time.
+<p align="center">
+  <em>A pocket time machine for tic-tac-toe. Make a move, then step <strong>forward</strong> through every timeline it creates — branching, counted, and explorable in real time.</em>
+</p>
 
-A fun side project that treats the world's simplest game as a tiny block universe.
-The present board is your "now"; the **futures tree** is the multiverse of everything
-that could happen next. Click any branch to **teleport** your now into that timeline
-and watch the future re-grow around you.
+<p align="center">
+  <img src="https://img.shields.io/badge/React-18-149ECA?style=flat-square&logo=react&logoColor=white" alt="React 18">
+  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript 5">
+  <img src="https://img.shields.io/badge/Vite-5-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite 5">
+  <img src="https://img.shields.io/badge/Motion-framer-0055FF?style=flat-square&logo=framer&logoColor=white" alt="framer-motion">
+  <img src="https://img.shields.io/badge/tests-103%20passing-2ea043?style=flat-square" alt="103 tests passing">
+  <img src="https://img.shields.io/badge/engine%20coverage-100%25-2ea043?style=flat-square" alt="engine coverage 100%">
+</p>
 
-## A little combinatorics
+<p align="center">
+  <a href="#-a-little-combinatorics">Combinatorics</a> ·
+  <a href="#-bending-time">Bending time</a> ·
+  <a href="#whats-inside">What's inside</a> ·
+  <a href="#run-it-locally">Run it</a> ·
+  <a href="#how-its-built">How it's built</a>
+</p>
 
-From the empty board there are `9!` = **362,880** ways to *order* nine moves — but games
-end the instant someone gets three in a row, and not every ordering is legal. Prune
-those and you're left with exactly:
+---
+
+A fun side project that treats the world's simplest game as a tiny **block universe**.
+The present board is your *now*; the **futures tree** is the multiverse of everything that
+could happen next. Click any branch to **teleport** your now into that timeline and watch
+the future re-grow around you.
+
+## 🎲 A little combinatorics
+
+From the empty board there are `9!` = **362,880** ways to *order* nine moves — but games end
+the instant someone gets three in a row, and not every ordering is legal. Prune those and you
+are left with exactly:
 
 ```
 255,168 complete games
-├── 131,184  X wins
-├──  46,080  draws
-└──  77,904  O wins
+├── 131,184   X wins   ▏ 51.4%
+├──  46,080   draws    ▏ 18.1%
+└──  77,904   O wins   ▏ 30.5%
 ```
 
-This app enumerates that space lazily, one branch at a time, and shows you the **census**
-— how many of those 255,168 timelines flow through each node you're looking at. Counts
-roll up the tree live as you expand it.
+This app enumerates that space lazily, one branch at a time, and shows you the **census** —
+how many of those 255,168 timelines flow through the node you are looking at. The counts roll
+up the tree live as you expand it.
 
-A nice party fact falls out of the symmetry: the 9 opening squares are really only **3**
-moves in disguise (a corner, an edge, the center) because the square has 8 symmetries —
-the dihedral group **D4**, rotations + reflections. Flip the **Fold symmetries** toggle
-and mirror-image timelines collapse into one (corner ×4, edge ×4, center ×1).
+A nice fact falls out of the square's symmetry: the 9 opening squares are really only **3**
+moves in disguise — a corner, an edge, the center — because the square has 8 symmetries (the
+dihedral group **D₄**: four rotations × two reflections). Flip **Fold symmetries** and
+mirror-image timelines collapse into one (corner ×4, edge ×4, center ×1).
 
-## Bending time
+## ⏳ Bending time
 
-- **Teleport.** Click any node in the tree and the present board jumps to that position.
-  Your "now" is just a bookmark in the block universe — move it freely.
-- **Two timelines to play in:**
-  - **Explore** — auto-alternating play; wander the futures with no opponent.
-  - **Beat the Oracle** — you're X against an opponent who has *already seen every future*
-    (perfect minimax play, or random if you want a fair fight). Every move you make is
-    graded **best / inaccuracy / blunder**, with a best-move streak counter. Spoiler from
-    the future: against perfect play the best you can force is a draw.
-- **Census vs. prophecy.** Raw outcome tallies by default; toggle the **minimax overlay**
-  to light up the theoretically optimal moves and the game-theoretic verdict — what *will*
-  happen if both sides play perfectly from here.
-- **Fate heatmap.** Tint every move by which side destiny favors.
-- **Effects** — sound, a win-line that draws itself, and a small celebration — all of which
-  politely stand down under `prefers-reduced-motion`.
-- **Onboarding** — a first-visit spotlight tour, inline ⓘ tooltips, and a "How it works"
-  legend so the controls explain themselves.
+- **Teleport** — click any node in the tree and the present board jumps to that position. Your
+  *now* is just a bookmark in the block universe; move it freely.
+- **Census vs. prophecy** — raw outcome tallies by default; toggle the **minimax overlay** to
+  light up the theoretically optimal moves and the game-theoretic verdict (what *will* happen if
+  both sides play perfectly from here).
+- **Beat the Oracle** — face an opponent who has *already seen every future*. Spoiler from said
+  future: against perfect play, the best you can force is a draw.
 
-## Tech stack
+<h2 id="whats-inside">🧩 What's inside</h2>
 
-Vite · React 18 · TypeScript · framer-motion · plain CSS with design tokens.
-Tests: Vitest + Testing Library + jsdom (the engine sits at 100% coverage).
+| Mode / toggle | What it does |
+| :-- | :-- |
+| 🧭 **Explore** | Auto-alternating play — wander the futures with no opponent. |
+| ♟️ **Beat the Oracle** | You're X against perfect minimax play (or random, for a fair fight). Every move is graded **best / inaccuracy / blunder**, with a best-move streak counter. |
+| 📊 **Minimax overlay** | Highlights optimal moves and the game-theoretic verdict for the position. |
+| 🔁 **Fold symmetries** | Merges D₄-equivalent branches — the 9 openings collapse to 3. |
+| 🌡️ **Fate heatmap** | Tints every move by which side destiny favors. |
+| 🔊 **Sound + effects** | Move/win cues, a self-drawing win line, a small celebration — all stand down under `prefers-reduced-motion`. |
+| 🧭 **Onboarding** | A first-visit spotlight tour, inline ⓘ tooltips, and a "How it works" legend. |
 
 ## Run it locally
 
@@ -61,18 +81,23 @@ This project uses **[Bun](https://bun.sh)**.
 ```bash
 bun install      # install dependencies
 bun run dev      # dev server → http://localhost:5173
-bun run test     # full test suite
+bun run test     # full test suite (103 tests)
 bun run typecheck
 bun run build    # type-check + production build
 bun run preview  # preview the production build
 ```
 
-> npm/Node work too, but `bun` is the reliable path in this environment.
+> npm / Node work too, but `bun` is the reliable path in this environment.
 
-## How it's built
+<h2 id="how-its-built">🏗️ How it's built</h2>
 
-A pure, framework-free **engine** computes everything about the game; a **UI** layer just
-draws it. They're separated by a frozen type contract so each side can evolve alone.
+A pure, framework-free **engine** computes everything about the game; a **UI** layer just draws
+it. They're separated by a frozen type contract so each side can evolve alone. Every position is
+keyed by a 9-character `boardKey`, so census and minimax results are memoized and shared across
+the whole tree — the multiverse is cheap to recount.
+
+<details>
+<summary><strong>Project structure</strong></summary>
 
 ```
 src/
@@ -82,7 +107,7 @@ src/
 │   ├── census.ts           # full outcome counts for any position
 │   ├── minimax.ts          # game-theoretic verdict + optimal moves
 │   ├── children.ts         # children() and foldedChildren() (symmetry-grouped)
-│   ├── symmetry.ts         # the D4 group, canonicalize, canonical keys
+│   ├── symmetry.ts         # the D₄ group, canonicalize, canonical keys
 │   ├── quality.ts          # classifyMove (best/inaccuracy/blunder), positionLean
 │   └── index.ts            # re-exports + compile-time Engine contract guard
 ├── ui/
@@ -98,19 +123,25 @@ src/
 └── App.tsx                 # shell / state orchestration
 ```
 
-Because every position is keyed by its 9-character `boardKey`, census and minimax results
-are memoized and shared across the whole tree — the multiverse is cheap to recount.
+</details>
 
-### Two invariants worth keeping
+<details>
+<summary><strong>Two invariants worth keeping</strong></summary>
 
-- **Nodes self-animate** to a visible end state with explicit `initial`/`animate`; visibility
-  is never delegated to parent→child variant propagation through `AnimatePresence`.
+- **Nodes self-animate** to a visible end state with explicit `initial`/`animate`; visibility is
+  never delegated to parent→child variant propagation through `AnimatePresence`.
 - The root child list is a plain `<ul key={rootKey}>` that **remounts cleanly on re-root**.
 
 Both exist because violating them made tree nodes vanish — twice. Don't reintroduce the bug.
 
+</details>
+
 ## Verified anchors
 
-- `census(empty)` = 255,168 total · 131,184 X / 46,080 draw / 77,904 O
-- `minimax(empty)` = DRAW (perfect play is always a tie — the oldest spoiler in gaming)
-- A corner opening folds O's 8 replies down to 5 distinct classes under D4.
+- `census(empty)` = **255,168** total · 131,184 X / 46,080 draw / 77,904 O
+- `minimax(empty)` = **DRAW** — perfect play is always a tie, the oldest spoiler in gaming
+- A corner opening folds O's 8 replies down to **5** distinct classes under D₄
+
+---
+
+<p align="center"><sub>Built for fun. Tic-tac-toe was solved decades ago; this just lets you walk around inside the solution.</sub></p>
